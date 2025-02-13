@@ -1,15 +1,38 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import repository.MovieDatabase;
+import java.util.Scanner;
+import static service.MovieApp.*;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final MovieDatabase movieDatabase = new MovieDatabase();
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\nMovie Application");
+            System.out.println("1. Search Movie");
+            System.out.println("2. Add Movie");
+            System.out.println("3. View All Movies");
+            System.out.println("4. Exit");
+            System.out.print("Enter choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    searchMovie();
+                    break;
+                case 2:
+                    addMovie();
+                    break;
+                case 3:
+                    viewAllMovies();
+                    break;
+                case 4:
+                    System.out.println("Exiting application...");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 }
